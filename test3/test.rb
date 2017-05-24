@@ -61,6 +61,22 @@ def generate_table_of_contents(table_of_contents, file_names)
   end
 
   table_of_contents.render_file "table_of_contents.pdf"
+
+ #  contents_hash = Hash.new
+
+ # # add anchor tag to each element
+ #  file_names.each_with_index do |val,index|
+ #    contents_hash[index+1] = table_of_contents.add_dest(val, 6)
+ #  end
+
+ #  p contents_hash[1].class
+
+ #  # table_of_contents.table(contents_hash) do |table|
+ #  #   table.rows(contents_hash.length)
+ #  # end
+
+ #  table_of_contents.render_file "table_of_contents.pdf"
+
 end
 
 
@@ -70,6 +86,7 @@ end
 def create_final_contract(address, final_contract, files_to_load, table_of_contents)
   files_to_load.unshift("table_of_contents.pdf")
   files_to_load.each do |file|
+
     final_contract << CombinePDF.load(file)
   end
 
